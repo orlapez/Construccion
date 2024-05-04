@@ -12,8 +12,8 @@ using Veterinary.API.Data;
 namespace Veterinary.API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20240430064618_UsersAll")]
-    partial class UsersAll
+    [Migration("20240504071607_Userss")]
+    partial class Userss
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -403,6 +403,9 @@ namespace Veterinary.API.Migrations
 
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("bit");
+
+                    b.Property<string>("Photo")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");

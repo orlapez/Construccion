@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Veterinary.API.Data;
 using Veterinary.Shared.Entities;
@@ -6,8 +8,8 @@ using Veterinary.Shared.Entities;
 namespace Veterinary.API.Controllers
 {
 
-
     [ApiController]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     [Route("api/[controller]")]
     public class OwnersController : ControllerBase
     {
@@ -116,6 +118,25 @@ namespace Veterinary.API.Controllers
             return NoContent();
 
         }
+
+        [AllowAnonymous]
+        [HttpGet("combo")]
+        public async Task<ActionResult> GetCombo()
+        {
+            return Ok(await _context.Owners.ToListAsync());
+        }
+
+
+
+[AllowAnonymous]
+        [HttpGet("combo/{OwnerId:int}")]
+        public async Task<ActionResult> GetCombo(int OwnerId)
+        {
+            return Ok(await _context.Owners
+                .Where(x => x.Id == OwnerId)
+                .ToListAsync());
+        }
+
     }
 
 }

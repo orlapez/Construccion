@@ -3,6 +3,9 @@
 @inject IRepository repository
 @inject SweetAlertService sweetAlertService
 
+@using Microsoft.AspNetCore.Authorization;
+
+
 <h3>Crear</h3>
 
 <OwnerForm @ref="ownerForm" Owner="owner" OnValidSubmit="Create" ReturnAction="Return"/>

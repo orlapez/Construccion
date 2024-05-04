@@ -1,10 +1,12 @@
 ﻿@page "/owners"
+@using Microsoft.AspNetCore.Authorization
 @using Veterinary.Shared.Entities
 @using Veterinary.WEB.Repositories
 @using Veterinary.WEB.Shared
 @inject IRepository repository
 @inject SweetAlertService sweetAlertService
 @inject NavigationManager navigationManager
+
 
 <div class="card">
     <div class="card-header">

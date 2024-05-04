@@ -30,7 +30,8 @@ namespace Veterinary.Shared.Entities
       
         public string Address { get; set; }
 
-
+        [Display(Name = "Foto")]
+        public string Photo { get; set; }
         public UserType UserType { get; set; }
 
 
